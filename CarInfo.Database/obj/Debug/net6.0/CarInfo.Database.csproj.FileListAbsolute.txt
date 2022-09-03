@@ -1,0 +1,17 @@
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\bin\Debug\net6.0\CarInfo.Database.deps.json
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\bin\Debug\net6.0\CarInfo.Database.runtimeconfig.json
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\bin\Debug\net6.0\CarInfo.Database.dll
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\bin\Debug\net6.0\CarInfo.Database.pdb
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\bin\Debug\net6.0\CarInfo.Models.dll
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\bin\Debug\net6.0\CarInfo.Models.pdb
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.csproj.AssemblyReference.cache
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.AssemblyInfoInputs.cache
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.AssemblyInfo.cs
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.csproj.CoreCompileInputs.cache
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.csproj.CopyComplete
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.dll
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\refint\CarInfo.Database.dll
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.pdb
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\CarInfo.Database.genruntimeconfig.cache
+D:\Ruzimurod\Projects\CarInfo\CarInfo.Database\obj\Debug\net6.0\ref\CarInfo.Database.dll

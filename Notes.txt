@@ -1,0 +1,19 @@
+dotnet new sln -n CarInfo
+
+dotnet new mvc -o CarInfo.WebApp
+
+dotnet new classlib -o CarInfo.Models
+
+dotnet new classlib -o CarInfo.Database
+
+dotnet sln CarInfo.sln add CarInfo.WebApp\CarInfo.WebApp.csproj
+
+dotnet sln CarInfo.sln add CarInfo.Models\CarInfo.Models.csproj
+
+dotnet sln CarInfo.sln add CarInfo.Database\CarInfo.Database.csproj
+
+dotnet ef migrations add Initial -p ..\CarInfo.Database\CarInfo.Database.csproj
+
+dotnet ef database update
+
+dotnet run

@@ -1,0 +1,45 @@
+﻿@model CarInfo.Models.Car
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Ushbu mashinani o'chirasizmi?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Ishlab chiqaruvchi
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Produccer)
+        </dd>
+        <dt class="col-sm-2">
+            Modeli
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            Rangi
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class="col-sm-2">
+            Narxi
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CarId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-info" asp-action="Index">
+            Ro'yhatga qaytish
+        </a>
+    </form>
+</div>
