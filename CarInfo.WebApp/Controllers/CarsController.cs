@@ -25,7 +25,7 @@ namespace CarInfo.WebApp.Controllers
             CarIndexVM viewModel = new CarIndexVM
             {
                 Cars = _context.Cars.ToList(),
-                Colors = _context.Cars.Select(i => i.Color).ToList()
+                Colors = _context.Cars.Select(i => i.Color).ToList().Distinct().ToList()
             };
             if (_context.Cars.Count() is not 0)
             {
@@ -35,6 +35,54 @@ namespace CarInfo.WebApp.Controllers
             return _context.Cars != null ?
                         View(viewModel) :
                         Problem("Hozircha hech qanday malumot yo'q");
+        }
+        // Post: Cars
+        [HttpPost]
+        public IActionResult Index(CarIndexVM viewModel)
+        {
+            List<Car> cars = new List<Car>();
+            string colorsString = viewModel.ColorString;
+
+            if (!string.IsNullOrEmpty(colorsString))
+            {
+                List<string> colors = colorsString.Split(",").ToList();
+                foreach (var color in colors)
+                {
+                    List<Car> carColors = _context.Cars.Where(i => i.Color == color).ToList();
+                    foreach (var colorCar in carColors)
+                    {
+                        cars.Add(colorCar);
+                    }
+                }
+            }
+            else
+            {
+                cars = _context.Cars.ToList();
+            }
+            long startPrice = long.MinValue;
+            long endPrice = long.MaxValue;
+
+            if (!string.IsNullOrEmpty(viewModel.StartPrice))
+            {
+                startPrice = long.Parse(viewModel.StartPrice);
+            }
+            if (!string.IsNullOrEmpty(viewModel.EndPrice))
+            {
+                endPrice = long.Parse(viewModel.EndPrice);
+            }
+            cars = cars.Where(i => i.Price >= startPrice).Where(i => i.Price <= endPrice).ToList();
+
+            CarIndexVM carViewModel = new CarIndexVM
+            {
+                Cars = cars.ToList(),
+                Colors = _context.Cars.Select(i => i.Color).ToList().Distinct().ToList()
+            };
+            if (_context.Cars.Count() is not 0)
+            {
+                viewModel.StartPrice = _context.Cars.Min(i => i.Price).ToString();
+                viewModel.EndPrice = _context.Cars.Max(i => i.Price).ToString();
+            }
+            return View(carViewModel);
         }
 
         // GET: Cars/Details/5
@@ -148,7 +196,7 @@ namespace CarInfo.WebApp.Controllers
         {
             if (_context.Cars == null)
             {
-                return Problem("Bunday model tizimda yo'q");
+                return Problem("Hozircha hech qanday malumot yo'q");
             }
             var car = await _context.Cars.FindAsync(id);
             if (car != null)
@@ -163,26 +211,6 @@ namespace CarInfo.WebApp.Controllers
         private bool CarExists(int id)
         {
             return (_context.Cars?.Any(e => e.CarId == id)).GetValueOrDefault();
-        }
-
-        public IActionResult SearchCar(string? colors, string? startPrice, string? endPrice)
-        {
-            List<Car> cars = new List<Car>();
-
-            List<string> colorList = new List<string>();
-
-            decimal startPriceDecimal = decimal.MinValue;
-            bool checkStart = decimal.TryParse(startPrice, out startPriceDecimal);
-
-            decimal EndPriceDecimal = decimal.MaxValue;
-            bool checkEnd = decimal.TryParse(startPrice, out EndPriceDecimal);
-
-            if (colors is not null)
-            {
-                colorList = colors.Split(",").ToList();
-            }
-
-            return RedirectToAction(nameof(Index), cars);
         }
     }
 }
