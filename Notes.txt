@@ -17,3 +17,8 @@ dotnet ef migrations add Initial -p ..\CarInfo.Database\CarInfo.Database.csproj
 dotnet ef database update
 
 dotnet run
+
+
+1] CarInfo.WebApp ni ichidagi AddMigartion.bat buyrug'i ishlatiladi
+2] CarInfo.WebApp ni ichidagi UpdateDatabase.bat buyrug'i ishlatiladi
+3] CarInfo.WebApp ni ichidagi Running.bat buyrug'i ishlatiladi

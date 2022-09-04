@@ -115,7 +115,15 @@ namespace CarInfo.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(car);
+                string color = car.Color.Substring(0, 1).ToUpper() + car.Color.Substring(1).ToLower();
+                Car newCar = new Car()
+                {
+                    Color = color,
+                    Model = car.Model,
+                    Price = car.Price,
+                    Produccer = car.Produccer
+                };
+                _context.Add(newCar);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

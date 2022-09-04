@@ -1,82 +1,94 @@
 ﻿@model CarInfo.Models.CarIndexVM
 
-<form id="AllData" asp-action="Index" asp-asp-controller="Cars" method="post">
-    <div class="form-row">
-        <input asp-for="ColorString" style="display:none;" id="colorStringInput" />
-        <div class="col">
-            <select class="selectpicker" multiple aria-label="size 3 select example">
-                @foreach (var color in Model.Colors)
-                {
-                    <option value="@color">@color</option>
-                }
-            </select>
-        </div>
-        <div class="col">
-            <div class="input-group">
-                <input asp-for="EndPrice" type="text" class="form-control" placeholder="Maksimal">
-                <input asp-for="StartPrice" type="text" class="form-control" placeholder="Minimal">
+<div class="row">
+    <div class="col-md-12">
+        <form id="AllData" asp-action="Index" asp-asp-controller="Cars" method="post">
+            <div>
+                <input asp-for="ColorString" style="display:none;" id="colorStringInput" />
+                <div class="col">
+                    <label class="form-label">Rangi</label>
+                    <select class="selectpicker" multiple aria-label="size 3 select example">
+                        @foreach (var color in Model.Colors)
+                        {
+                            <option value="@color">@color</option>
+                        }
+                    </select>
+                </div>
+                <br />
+                <div class="col">
+                    <label class="form-label">Maksimal qiymati</label>
+                    <input asp-for="EndPrice" type="number" class="form-control" placeholder="Maksimal">
+                    <br />
+                    <label class="form-label">Minimal qiymati</label>
+                    <input asp-for="StartPrice" type="number" class="form-control" placeholder="Minimal">
+                </div>
+                <br />
+                <div class="col">
+                    <a class="btn btn-primary" id="searchClick"><i class="bi bi-search"></i> Qidirish</a>
+                </div>
             </div>
-        </div>
-        <div class="col">
-            <a class="btn btn-primary" id="searchClick"><i class="bi bi-search"></i> Search</a>
-        </div>
+        </form>
     </div>
-    <br />
-    <br />
-    <br />
-    <p>
-        <a class="btn btn-info" asp-action="Create">
-            <i class="bi bi-plus-circle"></i> Yangi mashina qo'shish
-        </a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Ishlab chiqaruvchi
-                </th>
-                <th>
-                    Model
-                </th>
-                <th>
-                    Rangi
-                </th>
-                <th>
-                    Narxi
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Cars)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Produccer)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Color)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)$
-                    </td>
-                    <td>
-                        <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.CarId">
-                            <i class="bi bi-pencil-square"></i> Tahrirlash
-                        </a>
-                        <a class="btn btn-success" asp-action="Details" asp-route-id="@item.CarId">
-                            <i class="bi bi-ticket-detailed"></i> Tafsilotlar
-                        </a>
-                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CarId">
-                            <i class="bi bi-trash3"></i> O'chirish
-                        </a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+</div>
+<br />
+<br />
+<br />
 
-</form>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            <a class="btn btn-info" asp-action="Create">
+                <i class="bi bi-plus-circle"></i> Yangi mashina qo'shish
+            </a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Ishlab chiqaruvchi
+                    </th>
+                    <th>
+                        Model
+                    </th>
+                    <th>
+                        Rangi
+                    </th>
+                    <th>
+                        Narxi
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Cars)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Produccer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)$
+                        </td>
+                        <td>
+                            <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.CarId">
+                                <i class="bi bi-pencil-square"></i> Tahrirlash
+                            </a>
+                            <a class="btn btn-success" asp-action="Details" asp-route-id="@item.CarId">
+                                <i class="bi bi-ticket-detailed"></i> Tafsilotlar
+                            </a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CarId">
+                                <i class="bi bi-trash3"></i> O'chirish
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
